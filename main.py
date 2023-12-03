@@ -22,7 +22,13 @@ screen.onkey(l_paddle.go_up, "w")
 screen.onkey(l_paddle.go_down, "s")
 
 game_is_on = True
+
 while game_is_on:
+    if scoreboard.l_score == 5 or scoreboard.r_score == 5:
+        game_is_on = False
+        scoreboard.game_over("LEFT" if scoreboard.l_score == 5 else "RIGHT")
+        break
+
     time.sleep(ball.move_speed)
     screen.update()
     ball.move()
